@@ -152,7 +152,7 @@ public class RestfulSourceGenerator : IIncrementalGenerator
 
         source.CloseBlock();
 
-        source.PrependLines(usings.Order()
+        source.PrependLines(usings.OrderBy(x => x)
             .Where(namespaceName => !namespaceName.Contains("global namespace"))
             .Select(namespaceName => $"using {namespaceName};"));
         source.PrependLine();
